@@ -45,7 +45,9 @@ Reference: [MPC-HC Edge Sharpen example](https://gist.github.com/butterw/928aa89
   Uses the current post-resize pixel size when sampling neighboring pixels, so the sharpening footprint follows the actual output resolution instead of relying on fixed texture-coordinate offsets.
 
 - **Upscale-Aware Tuning**  
-  Tuned around lower-resolution video being upscaled through [MPC Video Renderer](https://github.com/Aleksoid1978/VideoRenderer)'s **Super Resolution** path, including the NVIDIA VSR workflow I use on supported GeForce hardware. The defaults were tested especially around 720p/1080p → 2K playback, helping preserve useful detail without over-sharpening naturally soft areas.
+  Tuned around lower-resolution video being upscaled through [MPC Video Renderer](https://github.com/Aleksoid1978/VideoRenderer)'s **Super Resolution** path, including the NVIDIA VSR workflow I use on supported GeForce hardware. This pairing is especially useful for **clean 720p sources** and **softer or moderately compressed 1080p sources** being displayed at a higher resolution, where Super Resolution can rebuild/upscale the image first and this shader can then add controlled edge and texture definition.
+
+  For already clean, high-bitrate, high-resolution sources, Super Resolution is usually **not necessary**. In those cases the shader can still be used by itself, but the benefit will generally be smaller because the source already contains more native detail.
 
 - **Noise-Aware Detail Protection**  
   Helps avoid turning compression noise, grain, or unstable detail into harsh artifacts.
@@ -93,6 +95,8 @@ These percentages describe the **sharpening contribution itself**, not a literal
 - Minimum shader profile: `ps_4_0`
 - Designed as a **Post-Resize Pixel Shader**
 - Tested and tuned with [MPC Video Renderer](https://github.com/Aleksoid1978/VideoRenderer) and its **Super Resolution** resizing path; this is the VSR workflow used during development
+- **Recommended pairing:** Super Resolution / NVIDIA VSR for clean 720p and softer or moderately compressed 1080p sources being upscaled to a higher display resolution
+- For already high-quality, high-resolution sources, VSR is generally **not needed**; the shader can be used on its own if extra detail enhancement is still desired
 - NVIDIA VSR / Super Resolution is **not required** — the shader can still be used as a normal MPC-BE post-resize shader
 - Supports SDR and HDR/scRGB-aware processing
 
