@@ -45,7 +45,7 @@ Reference: [MPC-HC Edge Sharpen example](https://gist.github.com/butterw/928aa89
   Uses the current post-resize pixel size when sampling neighboring pixels, so the sharpening footprint follows the actual output resolution instead of relying on fixed texture-coordinate offsets.
 
 - **Upscale-Aware Tuning**  
-  Includes tuning for lower-resolution video upscaled to higher output resolutions, including 720p/1080p → 2K and NVIDIA VSR workflows, helping preserve useful detail without over-sharpening naturally soft areas.
+  Tuned around lower-resolution video being upscaled through [MPC Video Renderer](https://github.com/Aleksoid1978/VideoRenderer)'s **Super Resolution** path, including the NVIDIA VSR workflow I use on supported GeForce hardware. The defaults were tested especially around 720p/1080p → 2K playback, helping preserve useful detail without over-sharpening naturally soft areas.
 
 - **Noise-Aware Detail Protection**  
   Helps avoid turning compression noise, grain, or unstable detail into harsh artifacts.
@@ -92,7 +92,8 @@ These percentages describe the **sharpening contribution itself**, not a literal
 - MPC-BE with the DirectX 11 shader path (`Shaders11`)
 - Minimum shader profile: `ps_4_0`
 - Designed as a **Post-Resize Pixel Shader**
-- Tuned primarily for upscaled video and NVIDIA VSR workflows
+- Tested and tuned with [MPC Video Renderer](https://github.com/Aleksoid1978/VideoRenderer) and its **Super Resolution** resizing path; this is the VSR workflow used during development
+- NVIDIA VSR / Super Resolution is **not required** — the shader can still be used as a normal MPC-BE post-resize shader
 - Supports SDR and HDR/scRGB-aware processing
 
 ## Installation
