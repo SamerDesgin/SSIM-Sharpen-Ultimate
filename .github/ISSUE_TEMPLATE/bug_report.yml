@@ -1,0 +1,87 @@
+name: Bug report
+description: Report a visual artifact, compatibility problem, or other unexpected behavior.
+title: "[Bug] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue with SSIM Sharpen Ultimate. Please include enough information to reproduce the problem.
+
+  - type: input
+    id: mpcbe_version
+    attributes:
+      label: MPC-BE version
+      placeholder: "Example: 1.8.x"
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+      placeholder: "Example: RTX 3070 Ti Laptop GPU"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hdr
+    attributes:
+      label: Playback mode
+      options:
+        - SDR
+        - HDR / scRGB
+        - Both / unsure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: vsr
+    attributes:
+      label: NVIDIA VSR
+      options:
+        - Enabled
+        - Disabled
+        - Not available / unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: renderer_setup
+    attributes:
+      label: Renderer / shader setup
+      description: Include relevant MPC-BE renderer settings, source resolution, output resolution, and any other active post-resize shaders.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the bug or visual artifact and where it appears.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Enable ...
+        3. Play ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / comparison
+      description: Add a screenshot or before/after comparison if possible. Ctrl + Alt + P toggles Post-Resize Pixel Shaders in MPC-BE.
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional information
+      description: Add anything else that may help reproduce or diagnose the issue.
