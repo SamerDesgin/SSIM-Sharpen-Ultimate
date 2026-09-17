@@ -10,13 +10,16 @@ This shader was developed with **AI assistance**, but not by simply generating a
 
 My background in **graphic design and visual work** guided the decisions about what looked natural, which artifacts were distracting, and which features were worth adding. AI was used as a coding and research assistant, while the visual evaluation, tuning direction, testing, feature choices, and final decisions were driven by repeated comparison and practical use.
 
+## How the Sharpening Works
+
+The shader compares each pixel with its surrounding pixels to estimate useful local detail, then adds that detail back in a controlled way. Strong edges and real texture are enhanced, while flat, soft, noisy, very dark, or halo-prone areas are reduced automatically.
+
+This is what lets it sharpen both **contours and surface texture** without relying on a simple global edge boost.
+
 ## Features
 
 - **Edge + Texture Sharpening**  
   Unlike basic sharpen filters that mainly emphasize edges, this shader also enhances fine surface texture and local detail.
-
-- **How the Sharpening Works**  
-  The shader compares each pixel with its surrounding pixels to estimate useful local detail, then adds that detail back in a controlled way. Strong edges and real texture are enhanced, while flat, soft, noisy, very dark, or halo-prone areas are reduced automatically. This is what lets it sharpen both contours and surface texture without relying on a simple global edge boost.
 
 - **Minimal Haloing**  
   Designed to keep bright and dark edge halos extremely low while retaining noticeable sharpening.
