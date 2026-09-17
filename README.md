@@ -1,4 +1,4 @@
-# SSIM Sharpen Ultimate
+# SSIM Sharpen Ultimate 🐊
 
 SSIM-based post-resize sharpening shader for MPC-BE. It is designed to sharpen both edges and fine textures while keeping haloing to a minimum.
 
@@ -72,3 +72,7 @@ The included default settings are the recommended settings. No tuning is require
 ## Bug Reports
 
 No known bugs have been found so far in current testing. If you notice a bug, visual artifact, compatibility issue, or other unexpected behavior, feel free to report it through [GitHub Issues](https://github.com/SamerDesgin/SSIM-Sharpen-Ultimate/issues).
+
+---
+
+Created by **Samer the Croc 🐊**
