@@ -16,6 +16,20 @@ The shader compares each pixel with its surrounding pixels to estimate useful lo
 
 This is what lets it sharpen both **contours and surface texture** without relying on a simple global edge boost.
 
+## How It Differs from Other Sharpeners
+
+Different sharpening shaders are built around different goals. This project is not simply an edge-sharpen filter with a stronger setting.
+
+| Approach | Main focus | Simple description |
+| --- | --- | --- |
+| **Edge Sharpen** | Strong edges and outlines | Detects edges and increases local contrast around them. This can make contours look crisp, but surface texture is not usually the main target. MPC-HC's Edge Sharpen, for example, uses Prewitt-style edge detection. |
+| **Adaptive Sharpen** | Blurry or medium-strength edges | Changes the sharpening amount depending on how strong an edge already is. [bacondither's Adaptive-sharpen](https://github.com/bacondither/Adaptive-sharpen) is designed to sharpen somewhat blurry edges more while reducing sharpening on already-sharp edges and flat areas, helping reduce ringing, noise, and banding. |
+| **SSIM Sharpen Ultimate** | Edges **and** texture | Uses SSIM-inspired local weighting to estimate useful detail from nearby pixels, then enhances both contours and fine surface texture. It also separates high- and mid-frequency detail and adds protections for noise, dark areas, depth-of-field, bright-edge halos, chroma, and HDR. |
+
+The practical difference is that **Edge Sharpen** is mainly about making outlines stronger, while **Adaptive Sharpen** mainly varies sharpening based on edge condition. **SSIM Sharpen Ultimate** is aimed at recovering a broader range of local detail while keeping the result controlled and natural-looking.
+
+Reference: [MPC-HC Edge Sharpen example](https://gist.github.com/butterw/928aa8961c06e8df827e3546c07f57c5) · [Adaptive-sharpen](https://github.com/bacondither/Adaptive-sharpen)
+
 ## Features
 
 - **Edge + Texture Sharpening**  
