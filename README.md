@@ -21,6 +21,12 @@ My background in **graphic design and visual work** guided the decisions about w
 - **Adaptive Sharpening**  
   Applies more sharpening where useful detail exists and backs off in areas that are already smooth or naturally soft.
 
+- **Resolution-Aware Sampling**  
+  Uses the current post-resize pixel size when sampling neighboring pixels, so the sharpening footprint follows the actual output resolution instead of relying on fixed texture-coordinate offsets.
+
+- **Upscale-Aware Tuning**  
+  Includes tuning for lower-resolution video upscaled to higher output resolutions, including 720p/1080p → 2K and NVIDIA VSR workflows, helping preserve useful detail without over-sharpening naturally soft areas.
+
 - **Noise-Aware Detail Protection**  
   Helps avoid turning compression noise, grain, or unstable detail into harsh artifacts.
 
