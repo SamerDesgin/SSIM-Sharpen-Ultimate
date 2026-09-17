@@ -79,6 +79,12 @@ to quickly toggle **Post-Resize Pixel Shaders** on/off and compare the sharpened
 
 The included default settings are the recommended settings. No tuning is required for normal use.
 
+## Development
+
+This shader was developed with **AI assistance**, but not by simply generating a finished filter. It went through repeated hands-on testing of sharpening strength, edge response, texture recovery, haloing, noise behavior, and overall image balance on real video.
+
+My background in **graphic design and visual work** guided the decisions about what looked natural, which artifacts were distracting, and which features were worth adding. AI was used as a coding and research assistant, while the visual evaluation, tuning direction, testing, feature choices, and final decisions were driven by repeated comparison and practical use.
+
 ## Changelog
 
 See [CHANGELOG.txt](https://github.com/SamerDesgin/SSIM-Sharpen-Ultimate/blob/main/CHANGELOG.txt) for meaningful changes between versions.
