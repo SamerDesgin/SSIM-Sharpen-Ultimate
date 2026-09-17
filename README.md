@@ -27,7 +27,7 @@ SSIM-based post-resize sharpening shader for MPC-BE. It is designed to sharpen b
 
 ## Installation
 
-1. Download `SSIM_Sharpen_Ultimate_v15.6.hlsl`.
+1. Download the latest version of `SSIM_Sharpen_Ultimate_vX.X.hlsl`.
 
 2. Copy it into your MPC-BE `Shaders11` folder.
 
@@ -68,3 +68,7 @@ Press:
 to quickly toggle **Post-Resize Pixel Shaders** on/off and compare the sharpened image with the original.
 
 The included default settings are the recommended settings. No tuning is required for normal use.
+
+## Bug Reports
+
+No known bugs have been found so far in current testing. If you notice a bug, visual artifact, compatibility issue, or other unexpected behavior, feel free to report it through [GitHub Issues](https://github.com/SamerDesgin/SSIM-Sharpen-Ultimate/issues).
