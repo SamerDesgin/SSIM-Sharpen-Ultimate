@@ -39,6 +39,34 @@ My background in **graphic design and visual work** guided the decisions about w
 - **Ready-to-Use Defaults**  
   The included settings are the recommended configuration. Manual tuning is optional.
 
+## Sharpening Strength
+
+The recommended default is:
+
+```hlsl
+#define STRENGTH 0.31
+```
+
+`0.31` is intentionally **subtle but clearly useful**. It improves edge definition and texture without pushing the image into an obviously sharpened look, and the difference is easy to check with **Ctrl + Alt + P**.
+
+If you want a stronger result while still staying away from an aggressive look, `0.33` is the recommended stronger option.
+
+With the default **25-tap mode**, the final sharpened detail is applied as:
+
+```hlsl
+final = c + final_detail * STRENGTH * 3.65;
+```
+
+That gives these effective detail multipliers:
+
+- `0.31` → `1.1315×` — recommended default
+- `0.32` → `1.1680×` — small step up
+- `0.33` → `1.2045×` — stronger, still controlled
+
+Because `STRENGTH` is a direct multiplier, even a `0.01` change can be visible. Relative to `0.31`, `0.32` increases the sharpen-detail contribution by about **3.2%**, while `0.33` increases it by about **6.45%**.
+
+These percentages describe the **sharpening contribution itself**, not a literal percentage increase in perceived image sharpness. The shader still adapts to local detail, edges, noise, dark areas, depth-of-field, and halo protection, so the visible difference will vary from scene to scene.
+
 ## Compatibility
 
 - MPC-BE with the DirectX 11 shader path (`Shaders11`)
