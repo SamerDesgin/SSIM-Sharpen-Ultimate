@@ -1,0 +1,50 @@
+SSIM-Based Detail Enhancement — Changelog
+
+Each section lists the meaningful changes introduced when moving from the earlier version to the newer version.
+
+v15.5 → v15.6
+- Added orientation-resolved anisotropic weighting for diagonal and knight-tap directions.
+- Improves cross-edge separation on slanted lines, hair, foliage, fabric, and other directional fine detail.
+- Keeps the existing cardinal anisotropy behavior and overall anisotropic penalty budget unchanged.
+- No changes to the shipped tuning values, HDR/SDR handling, DOF behavior, spatial tap weights, sample pattern, or accumulation order.
+
+v15.4 → v15.5
+- Reduced temporary value lifetimes in edge suppression, DOF, and detail-clamp calculations to improve shader efficiency without changing the equations or tuning.
+
+v15.3 → v15.4
+- Added protection against invalid fractional pow() inputs to prevent possible NaN propagation.
+- Separated SSIM spatial diagonal weighting from DOF edge weighting for clearer, safer maintenance.
+- Added compile-time validation for incompatible or invalid mode combinations.
+
+v15.2 → v15.3
+- Simplified 3-zone DOF variance evaluation using one-pass sum/sum-of-squares accumulation.
+- Replaced SSIM exponential falloff with mathematically equivalent exp2-based evaluation.
+- Removed redundant DOF work where the result is discarded.
+
+v15.1 → v15.2
+- Corrected high-frequency / mid-frequency separation and clamp behavior.
+- Changed HDR detail-clamp scaling to perceptual luma to avoid excessive bright-pixel clamp growth.
+- Improved luma-adaptive noise gating and chroma protection.
+- Reworked DOF edge evaluation to reduce branch overhead while preserving the intended behavior.
+- Added DOF variance scaling for upscaled sources.
+
+v15.0 → v15.1
+- Decoupled the mid-frequency clamp reference from the edge-aware detail signal for more stable texture enhancement across sensitivity settings.
+
+Pre-v15.0 → v15.0
+- Expanded HDR-aware protection, highlight handling, chroma dampening, and DOF boundary analysis.
+- Added force-SDR / force-HDR override support and cascade correction.
+
+Earlier major milestones
+
+v14.0 → v15.0
+- Expanded HDR-aware perceptual-luma handling, chroma protection, and edge/DOF behavior across SDR and HDR pipelines.
+
+v13.5 → v14.x
+- Added anisotropic SSIM weighting and frequency-separated detail processing, then refined directional weighting and perceptual threshold handling.
+
+v13.0 → v14.5
+- Added 3-zone asymmetric DOF protection and progressively refined its edge logic, HDR scaling, and full 25-tap variance evaluation.
+
+v4.0 → v13.0
+- Expanded the shader from the earlier sampling design into the 25-tap edge-aware SSIM detail-enhancement pipeline used by later releases.
